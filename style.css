@@ -1,3 +1,46 @@
-* {
-    filter: blur(2px);
+body {
+    display: flex;
+    flex-direction: column;
 }
+
+.show-page > :not(#add-book-form) {
+    filter: blur(0);
+}
+
+.blur-page > :not(#add-book-form) {
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+form {
+    padding: 10px;
+    background-color: beige;
+    position: absolute;
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 10px;
+}
+
+legend {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+#escape-menu-button {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+label, 
+input {
+    grid-column: 1 / 4;
+}
+
+.form-hidden {
+    opacity: 0;
+}
+
+.form-show {
+    opacity: 1;
+}
+
+

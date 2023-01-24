@@ -10,8 +10,26 @@
     <script src="script.js" defer></script>
 </head>
 
-<body>
-    <h2>Ripp</h2>
+<body class="show-page">
+    <header>Library</header>
+    <div class="main-content">
+        <button class="add-book-menu-button">Add Book</button>
+    </div>
+    <form action="script.js" method="post" class="form-hidden" id="add-book-form">
+        <legend>Add a Book</legend>
+        <button type="reset" id="escape-menu-button">x</button>
+
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author">
+
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+
+        <label for="pages">Number of Pages</label>
+        <input type="number" id="pages" name="pages">
+
+        <button type="submit" id="submit-form-button">Add Book</button>
+    </form>
 </body>
 
 </html>
