@@ -73,31 +73,30 @@ function toggleRead(toggle, book) {
     });
 };
 
+//Function to create simple book card element and append it 
+function createBookElementAndAppend(elementType, className, objectKey, appendLocation) {
+    let newElement = document.createElement(elementType);
+    newElement.classList.add(className);
+    newElement.textContent = objectKey;
+    appendLocation.appendChild(newElement);
+};
 
 //element and classname to be written as strings
 function createBookCard(book) {
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
+    mainContentDiv.appendChild(bookCard);
 
-    let bookTitle = document.createElement("p");
-    bookTitle.classList.add("book-title");
-    bookTitle.textContent = book.title;
-
-    let bookAuthor = document.createElement("p");
-    bookAuthor.classList.add("book-author");
-    bookAuthor.textContent = book.author;
-
-    let bookPages = document.createElement("p");
-    bookPages.classList.add("book-pages");
-    bookPages.textContent = book.pages;
+    createBookElementAndAppend("p", "book-title", book.title, bookCard);
+    createBookElementAndAppend("p", "book-author", book.author, bookCard);
+    createBookElementAndAppend("p", "book-pages", book.pages, bookCard);
 
     let bookRead = document.createElement("input");
     bookRead.setAttribute("type", "checkbox");
     bookRead.classList.add("book-read");
     let readToggle = book.read === true ? bookRead.classList.add("read") : bookRead.classList.add("not-read");
 
-    mainContentDiv.appendChild(bookCard);
-    appendMultiple(bookCard, bookTitle, bookAuthor, bookPages, bookRead);
+    bookCard.appendChild(bookRead);
     toggleRead(bookRead, book);
 };
 
