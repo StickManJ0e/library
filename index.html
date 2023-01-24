@@ -8,29 +8,41 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="show-page">
-    <header>Library</header>
+    <header>-LIBRARY-</header>
     <div class="main-content">
-        <button class="add-book-menu-button">Add Book</button>
-
     </div>
+    <button class="add-book-menu-button">+</button>
     <form action="script.js" method="post" class="form-hidden" id="add-book-form">
         <legend>Add a Book</legend>
         <button type="reset" id="escape-menu-button">x</button>
 
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author">
+        <div class="input-section">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
+        </div>
 
-        <label for="title">Title</label>
-        <input type="text" id="title" name="title">
+        <div class="input-section">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title">
+        </div>
 
-        <label for="pages">Total Number of Pages</label>
-        <input type="number" id="pages" name="pages">
+        <div class="input-section">
+            <label for="pages">Total Number of Pages</label>
+            <input type="number" id="pages" name="pages">
+        </div>
 
-        <label for="read">Have You Read It?</label>
-        <input type="checkbox" name="read" id="read">
+        <div class="input-section">
+            <label for="read">Have You Read It?</label>
+            <input type="checkbox" name="read" id="read">
+        </div>
 
         <button type="submit" id="submit-form-button">Add Book</button>
     </form>
