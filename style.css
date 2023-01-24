@@ -43,4 +43,19 @@ input {
     opacity: 1;
 }
 
+.book-read {
+    width: 1rem;
+    height: 1rem;
+    padding: 25px;
+}
+
+.book-read.read::before {
+    background-color: green;
+    content: "Read";
+}
+
+.not-read:before {
+    background-color: red;
+    content: "Not Read";
+}
 
