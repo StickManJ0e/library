@@ -40,6 +40,8 @@ function addBookToLibrary(author, title, pages, read) {
     console.log(myLibrary);
 };
 
+//Creates an object using form data and turning that object into an book object 
+//then adding to myLibrary array.
 addBookForm.addEventListener('submit', (event) => {
     //Stop form from actually submitting and turning the data into an object
     event.preventDefault();
@@ -73,31 +75,54 @@ function toggleRead(toggle, book) {
     });
 };
 
+function removeBook(bookRemove, object, arrary, parent) {
+    bookRemove.addEventListener('click', () => {
+
+        //Remove associated book DOM elements
+        let child = parent.lastElementChild;
+        while (child) {
+            parent.removeChild(child);
+            child = parent.lastElementChild;
+        };
+
+        //Remove object from myLibrary array
+        arrary.splice(arrary.indexOf(object), 1);
+    });
+};
+
 //Function to create simple book card element and append it 
-function createBookElementAndAppend(elementType, className, objectKey, appendLocation) {
+function createBookElementAndAppend(elementType, className, text, appendLocation) {
     let newElement = document.createElement(elementType);
     newElement.classList.add(className);
-    newElement.textContent = objectKey;
+    newElement.textContent = text;
     appendLocation.appendChild(newElement);
 };
 
 //element and classname to be written as strings
 function createBookCard(book) {
+    //Create the book card div
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     mainContentDiv.appendChild(bookCard);
 
+    //Create and append the title, author and page section of the book card
     createBookElementAndAppend("p", "book-title", book.title, bookCard);
     createBookElementAndAppend("p", "book-author", book.author, bookCard);
     createBookElementAndAppend("p", "book-pages", book.pages, bookCard);
 
+    //Create a read or not read toggle
     let bookRead = document.createElement("input");
     bookRead.setAttribute("type", "checkbox");
     bookRead.classList.add("book-read");
     let readToggle = book.read === true ? bookRead.classList.add("read") : bookRead.classList.add("not-read");
-
     bookCard.appendChild(bookRead);
     toggleRead(bookRead, book);
+
+    let bookRemove = document.createElement("button");
+    bookRemove.classList.add("remove-book-button");
+    bookRemove.textContent = "Remove";
+    bookCard.appendChild(bookRemove);
+    removeBook(bookRemove, book, myLibrary, bookCard);
 };
 
 
