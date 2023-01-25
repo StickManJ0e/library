@@ -46,7 +46,7 @@ addBookForm.addEventListener('submit', (event) => {
     //Stop form from actually submitting and turning the data into an object
     event.preventDefault();
     let data = Object.fromEntries(new FormData(event.target).entries());
-    let readStatus = data.read === 'on' ? true : false;
+    let readStatus = data.read === 'on' ? "read" : "notRead";
     addBookToLibrary(data.author, data.title, data.pages, readStatus);
 
     addRemoveClass(addBookForm, 'form-show', 'form-hidden');
@@ -61,16 +61,20 @@ function appendMultiple(appendLocation, ...children) {
     });
 };
 
+
 //Toggle the read/not read for books
-function toggleRead(toggle, book) {
-    toggle.addEventListener('click', () => {
-        if (book.read === true) {
-            addRemoveClass(toggle, 'read', 'not-read');
-            book.read = false;
+function toggleRead(button, book) {
+    button.addEventListener('click', () => {
+        if (book.read === "read") {
+            addRemoveClass(button, 'read', 'not-read');
+            book.read = "notRead";
+            button.textContent = "Not Read";
             return;
         }
-        addRemoveClass(toggle, 'not-read', 'read');
-        book.read = true;
+
+        addRemoveClass(button, 'not-read', 'read');
+        book.read = "read";
+        button.textContent = "Read";
         return;
     });
 };
@@ -111,10 +115,12 @@ function createBookCard(book) {
     createBookElementAndAppend("p", "book-pages", book.pages, bookCard);
 
     //Create a read or not read toggle
-    let bookRead = document.createElement("input");
-    bookRead.setAttribute("type", "checkbox");
+    // let bookRead = document.createElement("input");
+    // bookRead.setAttribute("type", "checkbox");
+    let bookRead = document.createElement("button");
     bookRead.classList.add("book-read");
-    let readToggle = book.read === true ? bookRead.classList.add("read") : bookRead.classList.add("not-read");
+    bookRead.textContent = book.read === "read" ? "Read" : "Not Read";
+    let readToggle = book.read === "read" ? bookRead.classList.add("read") : bookRead.classList.add("not-read");
     bookCard.appendChild(bookRead);
     toggleRead(bookRead, book);
 

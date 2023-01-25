@@ -67,7 +67,7 @@ form {
     align-items: center;
 }
 
-form *:not(button){
+form *:not(button):not(input) {
     color: white;
 }
 
@@ -150,14 +150,12 @@ input {
     grid-row: 4 /5;
 }
 
-.book-read.read::before {
-    background-color: var(--read-color);
-    content: "Read";
+.book-read.read {
+    background-color: var(--header-color);
 }
 
-.not-read:before {
+.not-read {
     background-color: var(--not-read-color);
-    content: "Not Read";
 }
 
 .book-card {
