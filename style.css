@@ -58,20 +58,39 @@ form {
     text-align: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     row-gap: 10px;
     width: 300px;
     height: 400px;
     border-radius: 25px;
+    justify-self: center;
+    align-items: center;
+}
+
+form *:not(button){
+    color: white;
+}
+
+form * {
+    text-transform: uppercase;
+    font-weight: 400;
 }
 
 legend {
-    grid-area: 1 / 1 / 2 / 3;
+    grid-area: 1 / 1 / 2 / 4;
+    font-size: 24px;
+    font-weight: 500;
+    justify-self: center;
 }
 
 form > button {
     border: 0 none;
     background-color: var(--background-color);
+}
+
+form > button:hover {
+    opacity: 0.9;
+    transform: scale(1.2, 1.2);
 }
 
 #escape-menu-button {
@@ -84,14 +103,23 @@ form > button {
 
 #submit-form-button {
     border-radius: 25px;
-    grid-area: 6/ 1 / 7 / 3;
+    grid-area: 6/ 1 / 7 / 4;
+    width: 7.5rem;
+    justify-self: center;
+    height: 1.5rem;
+}
+
+form > input[type="checkbox"] {
+    width: 1.5rem;
 }
 
 .input-section {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     grid-column: 1 / 6;
-    column-gap: 20px;
+    gap: 20px;
+    align-items: center;
 }
 
 .input-section > input {
@@ -119,6 +147,7 @@ input {
     width: 1rem;
     height: 1rem;
     padding: 25px;
+    grid-row: 4 /5;
 }
 
 .book-read.read::before {
@@ -134,6 +163,8 @@ input {
 .book-card {
     width: 250px;
     height: 300px;
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
 }
 
 .add-book-menu-button {
@@ -147,11 +178,30 @@ input {
     background-color: var(--header-color);
     font-weight: 700;
     font-size: 3rem;
+    color: white;
 }
 
-.add-book-menu-button:hover {
+.add-book-menu-button:hover,
+form > button:hover,
+form > input[type="checkbox"] {
     transform: scale(1.2, 1.2);
     opacity: 0.9;
+}
+
+.book-title {
+    grid-row: 1 / 2;
+}
+
+.book-author {
+    grid-row: 2 / 3;
+}
+
+.book-pages {
+    grid-row: 3 / 4;
+}
+
+.remove-book-button {
+    grid-row: 5 / 6;
 }
 
 
