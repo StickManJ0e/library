@@ -90,15 +90,16 @@ function removeBook(bookRemove, object, arrary, parent) {
         };
 
         //Remove object from myLibrary array
+        parent.remove();
         arrary.splice(arrary.indexOf(object), 1);
     });
 };
 
 //Function to create simple book card element and append it 
-function createBookElementAndAppend(elementType, className, text, appendLocation) {
+function createBookElementAndAppend(elementType, className, text, appendLocation, key) {
     let newElement = document.createElement(elementType);
     newElement.classList.add(className);
-    newElement.textContent = text;
+    newElement.textContent = key === "Title" ? text : `${key}: ${text}`;
     appendLocation.appendChild(newElement);
 };
 
@@ -110,9 +111,9 @@ function createBookCard(book) {
     mainContentDiv.appendChild(bookCard);
 
     //Create and append the title, author and page section of the book card
-    createBookElementAndAppend("p", "book-title", book.title, bookCard);
-    createBookElementAndAppend("p", "book-author", book.author, bookCard);
-    createBookElementAndAppend("p", "book-pages", book.pages, bookCard);
+    createBookElementAndAppend("p", "book-title", book.title, bookCard, "Title");
+    createBookElementAndAppend("p", "book-author", book.author, bookCard, "Author");
+    createBookElementAndAppend("p", "book-pages", book.pages, bookCard, "Number of Pages");
 
     //Create a read or not read toggle
     // let bookRead = document.createElement("input");
